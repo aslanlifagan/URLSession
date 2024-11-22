@@ -53,8 +53,9 @@ final class MainViewController: BaseViewController {
     }
         
 }
-
-extension MainViewController: UITableViewDelegate, UITableViewDataSource {
+//MARK: UITableViewDelegate,UITableViewDataSource
+extension MainViewController: UITableViewDelegate,
+                              UITableViewDataSource {
     func tableView(
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
@@ -67,8 +68,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(for: TitleSubtitleCell.self, for: indexPath)
-        guard let item = viewModel.getProtocol(index: indexPath.row) else {return UITableViewCell()}
-        cell.configureCell(model: item)
+//        guard let item = viewModel.getProtocol(index: indexPath.row) else {return UITableViewCell()}
+//        cell.configureCell(model: item)
         return cell
     }
 }

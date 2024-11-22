@@ -9,7 +9,7 @@ import UIKit
 final class TitleSubtitleCell: UITableViewCell {
     private lazy var titleLabel: UILabel = {
        let l = UILabel()
-        l.text = ""
+        l.text = "Test"
         l.textAlignment = .left
         l.numberOfLines = 1
         l.font = UIFont.systemFont(ofSize: 14, weight: .regular)
@@ -20,7 +20,7 @@ final class TitleSubtitleCell: UITableViewCell {
     
     private lazy var subtitleLabel: UILabel = {
        let l = UILabel()
-        l.text = ""
+        l.text = "Test"
         l.textAlignment = .left
         l.numberOfLines = 1
         l.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
@@ -48,11 +48,9 @@ final class TitleSubtitleCell: UITableViewCell {
     }
     
     fileprivate func configureUI() {
-//        selectionStyle = .none
         addSubview(stackView)
-        stackView.fillSuperview()
+        stackView.fillSuperview(padding: .init(top: 12, left: 0, bottom: -12, right: 0))
     }
-    
     
     func configureCell(model: TitleSubtitleProtocol) {
         titleLabel.text = model.titleString

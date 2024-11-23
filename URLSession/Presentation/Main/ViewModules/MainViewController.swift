@@ -9,14 +9,14 @@ import UIKit
 
 final class MainViewController: BaseViewController {
     private lazy var table: UITableView = {
-       let t = UITableView()
+        let t = UITableView()
         t.delegate = self
         t.dataSource = self
         t.register(cell: TitleSubtitleCell.self)
         t.separatorStyle = .none
         return t
     }()
-
+    
     private lazy var loadingView: UIActivityIndicatorView = {
         let v = UIActivityIndicatorView(style: .large)
         v.tintColor = .red
@@ -31,10 +31,13 @@ final class MainViewController: BaseViewController {
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureViewModel()
+//        viewModel.getCommentList()
+        viewModel.getPostList()
     }
     
     override func configureView() {
@@ -51,7 +54,25 @@ final class MainViewController: BaseViewController {
     override func configureTargets() {
         super.configureTargets()
     }
+    
+    fileprivate func configureViewModel() {
         
+        viewModel.listener = { [weak self] state in
+            guard let self = self else {return}
+            DispatchQueue.main.async {
+                switch state {
+                    case .loading:
+                        self.loadingView.startAnimating()
+                    case .loaded:
+                        self.loadingView.stopAnimating()
+                    case .success:
+                        self.table.reloadData()
+                    case .error(let message):
+                        self.showMessage(title: "Xeta", message: message)
+                }
+            }
+        }
+    }
 }
 //MARK: UITableViewDelegate,UITableViewDataSource
 extension MainViewController: UITableViewDelegate,
@@ -68,8 +89,8 @@ extension MainViewController: UITableViewDelegate,
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(for: TitleSubtitleCell.self, for: indexPath)
-//        guard let item = viewModel.getProtocol(index: indexPath.row) else {return UITableViewCell()}
-//        cell.configureCell(model: item)
+        guard let item = viewModel.getProtocol(index: indexPath.row) else {return UITableViewCell()}
+        cell.configureCell(model: item)
         return cell
     }
 }

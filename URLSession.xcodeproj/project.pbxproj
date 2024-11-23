@@ -12,6 +12,10 @@
 		8289CD682CF0B0670065347F /* TitleSubtitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8289CD672CF0B0670065347F /* TitleSubtitleCell.swift */; };
 		8289CD6B2CF0B0A50065347F /* TitleSubtitleProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8289CD6A2CF0B0A50065347F /* TitleSubtitleProtocol.swift */; };
 		8289CD6E2CF0B1740065347F /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8289CD6D2CF0B1740065347F /* BaseViewController.swift */; };
+		8289CD722CF0DFE70065347F /* CommentDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8289CD712CF0DFE70065347F /* CommentDTO.swift */; };
+		8289CD762CF0E89A0065347F /* CoreAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8289CD752CF0E89A0065347F /* CoreAPIManager.swift */; };
+		8289CD782CF0E9390065347F /* CoreAPIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8289CD772CF0E9390065347F /* CoreAPIHelper.swift */; };
+		8289CD7A2CF0ECA80065347F /* PostDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8289CD792CF0ECA80065347F /* PostDTO.swift */; };
 		82C64CE52CF0ADB300961080 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C64CE42CF0ADB300961080 /* AppDelegate.swift */; };
 		82C64CE72CF0ADB300961080 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C64CE62CF0ADB300961080 /* SceneDelegate.swift */; };
 		82C64CE92CF0ADB300961080 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C64CE82CF0ADB300961080 /* MainViewController.swift */; };
@@ -26,6 +30,10 @@
 		8289CD672CF0B0670065347F /* TitleSubtitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSubtitleCell.swift; sourceTree = "<group>"; };
 		8289CD6A2CF0B0A50065347F /* TitleSubtitleProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSubtitleProtocol.swift; sourceTree = "<group>"; };
 		8289CD6D2CF0B1740065347F /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		8289CD712CF0DFE70065347F /* CommentDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentDTO.swift; sourceTree = "<group>"; };
+		8289CD752CF0E89A0065347F /* CoreAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreAPIManager.swift; sourceTree = "<group>"; };
+		8289CD772CF0E9390065347F /* CoreAPIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreAPIHelper.swift; sourceTree = "<group>"; };
+		8289CD792CF0ECA80065347F /* PostDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDTO.swift; sourceTree = "<group>"; };
 		82C64CE12CF0ADB300961080 /* URLSession.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = URLSession.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82C64CE42CF0ADB300961080 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82C64CE62CF0ADB300961080 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +113,8 @@
 			isa = PBXGroup;
 			children = (
 				8289CD6A2CF0B0A50065347F /* TitleSubtitleProtocol.swift */,
+				8289CD712CF0DFE70065347F /* CommentDTO.swift */,
+				8289CD792CF0ECA80065347F /* PostDTO.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -134,6 +144,23 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
+		8289CD732CF0E8660065347F /* NetworkLayer */ = {
+			isa = PBXGroup;
+			children = (
+				8289CD742CF0E88F0065347F /* Core */,
+			);
+			path = NetworkLayer;
+			sourceTree = "<group>";
+		};
+		8289CD742CF0E88F0065347F /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				8289CD752CF0E89A0065347F /* CoreAPIManager.swift */,
+				8289CD772CF0E9390065347F /* CoreAPIHelper.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
 		82C64CD82CF0ADB300961080 = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				8289CD5E2CF0AFC10065347F /* App */,
+				8289CD732CF0E8660065347F /* NetworkLayer */,
 				8289CD612CF0AFE00065347F /* Presentation */,
 				8289CD602CF0AFD40065347F /* Resources */,
 				8289CD592CF0AF920065347F /* Extension */,
@@ -237,8 +265,12 @@
 				82C64CE52CF0ADB300961080 /* AppDelegate.swift in Sources */,
 				82C64CFC2CF0AE4900961080 /* MainViewModel.swift in Sources */,
 				8289CD5D2CF0AFB10065347F /* Extension.swift in Sources */,
+				8289CD7A2CF0ECA80065347F /* PostDTO.swift in Sources */,
+				8289CD782CF0E9390065347F /* CoreAPIHelper.swift in Sources */,
+				8289CD722CF0DFE70065347F /* CommentDTO.swift in Sources */,
 				8289CD6E2CF0B1740065347F /* BaseViewController.swift in Sources */,
 				8289CD5B2CF0AFA20065347F /* LayoutExtension.swift in Sources */,
+				8289CD762CF0E89A0065347F /* CoreAPIManager.swift in Sources */,
 				8289CD6B2CF0B0A50065347F /* TitleSubtitleProtocol.swift in Sources */,
 				82C64CE72CF0ADB300961080 /* SceneDelegate.swift in Sources */,
 			);

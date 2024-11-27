@@ -36,8 +36,9 @@ final class MainViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewModel()
-//        viewModel.getCommentList()
-        viewModel.getPostList()
+        //        viewModel.getCommentList()
+        viewModel.getCommentWithPost()
+        //        viewModel.getPostList()
     }
     
     override func configureView() {

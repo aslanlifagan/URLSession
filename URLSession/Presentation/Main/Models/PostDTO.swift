@@ -8,12 +8,13 @@
 import Foundation
 // MARK: - PostDTO
 struct PostDTO: Codable {
-    let userID, id: Int?
     let title, body: String?
-
+    let userID, id: Int?
+    
     enum CodingKeys: String, CodingKey {
+        case title, body
         case userID = "userId"
-        case id, title, body
+        case id
     }
 }
 

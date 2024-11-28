@@ -49,27 +49,45 @@ final class MainViewModel {
         }
     }
     
-    //    func getPostList() {
-    //        self.listener?(.loading)
-    //        CoreAPIManager.instance.request(type: PostList.self, path: "posts") { [weak self] result in
-    //            guard let self = self else {return}
-    //            self.listener?(.loaded)
-    //            switch result {
-    //                case .success(let list):
-    //                    //                    self.list = list
-    //                    self.postList = list
-    //                    self.listener?(.success)
-    //                case .failure(let error):
-    //                    listener?(.error(error.localizedDescription))
-    //            }
-    //        }
-    //    }
+    func getPostList() {
+        self.listener?(.loading)
+        PostAPIManager.instance.getPostList { [weak self] response, error in
+            guard let self = self else {return}
+            self.listener?(.loaded)
+            if let response = response {
+                postList = response
+                self.listener?(.success)
+            } else if let error = error {
+                self.listener?(.error(error.message ?? ""))
+            }
+        }
+    }
+    
+    func createPost() {
+        let body: [String: Any] = [
+            "title": "Test",
+            "body": "ksajdbasjhkdbsahjbaskhjdbasjdbaskhjdbasjdbahjdbasjhdbsahjd",
+            "userId": 1000
+        ]
+        listener?(.loading)
+        PostAPIManager.instance.createPost(body: body){ [weak self] response, error in
+            guard let self = self else {return}
+            self.listener?(.loaded)
+            if let response = response {
+                postList = response
+                print(response)
+                self.listener?(.success)
+            } else if let error = error {
+                self.listener?(.error(error.message ?? ""))
+            }
+        }
+    }
     
     func getProtocol(index: Int) -> TitleSubtitleProtocol? {
-        return list?[index]
+        return postList?[index]
     }
     
     func getItems() -> Int {
-        list?.count ?? 0
+        postList?.count ?? 0
     }
 }

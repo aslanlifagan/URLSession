@@ -23,6 +23,15 @@ final class MainViewController: BaseViewController {
         return v
     }()
     
+    private lazy var submitButton: UIButton = {
+        let b = UIButton()
+        b.setTitle("Create", for: .normal)
+        b.backgroundColor = .red
+        b.titleLabel?.textColor = .white
+        b.anchorSize(.init(width: 0, height: 56))
+        return b
+    }()
+    
     private let viewModel: MainViewModel
     
     init(viewModel: MainViewModel) {
@@ -36,26 +45,35 @@ final class MainViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewModel()
-        //        viewModel.getCommentList()
-        viewModel.getCommentWithPost()
-        //        viewModel.getPostList()
+        //                viewModel.getCommentList()
+        //        viewModel.getCommentWithPost()
+        viewModel.getPostList()
     }
     
     override func configureView() {
         super.configureView()
-        view.addSubViews(table, loadingView)
+        view.addSubViews(table, loadingView, submitButton)
     }
     
     override func configureConstraint() {
         super.configureConstraint()
         table.fillSuperview(padding: .init(all: 24))
         loadingView.fillSuperview()
+        submitButton.anchor(
+            leading: view.leadingAnchor,
+            bottom: view.safeAreaLayoutGuide.bottomAnchor,
+            trailing: view.trailingAnchor,padding: .init(all: 20))
     }
     
     override func configureTargets() {
         super.configureTargets()
+        submitButton.addTarget(self, action: #selector(submitButtonClicked), for: .touchUpInside)
     }
     
+    @objc func submitButtonClicked() {
+        viewModel.createPost()
+        print(#function)
+    }
     fileprivate func configureViewModel() {
         
         viewModel.listener = { [weak self] state in

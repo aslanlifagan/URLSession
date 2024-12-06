@@ -8,12 +8,19 @@
 import UIKit
 
 final class MainViewController: BaseViewController {
+    private lazy var refreshController: UIRefreshControl = {
+        let r = UIRefreshControl()
+        r.addTarget(self, action: #selector(reloadPage), for: .valueChanged)
+        return r
+    }()
+    
     private lazy var table: UITableView = {
         let t = UITableView()
         t.delegate = self
         t.dataSource = self
         t.register(cell: TitleSubtitleCell.self)
         t.separatorStyle = .none
+        t.refreshControl = refreshController
         return t
     }()
     
@@ -31,6 +38,8 @@ final class MainViewController: BaseViewController {
         b.anchorSize(.init(width: 0, height: 56))
         return b
     }()
+    
+    
     
     private let viewModel: MainViewModel
     
@@ -72,6 +81,10 @@ final class MainViewController: BaseViewController {
         viewModel.sortedAreaList()
     }
     
+    @objc func reloadPage() {
+        viewModel.getCountryListRequest()
+    }
+    
     fileprivate func configureViewModel() {
         
         viewModel.listener = { [weak self] state in
@@ -82,6 +95,7 @@ final class MainViewController: BaseViewController {
                         self.loadingView.startAnimating()
                     case .loaded:
                         self.loadingView.stopAnimating()
+                        self.refreshController.endRefreshing()
                     case .success:
                         self.table.reloadData()
                     case .error(let message):

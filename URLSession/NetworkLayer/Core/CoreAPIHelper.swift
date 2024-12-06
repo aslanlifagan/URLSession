@@ -14,10 +14,15 @@ enum HttpMethods: String {
     case DELETE
 }
 
+enum BaseURL: String {
+    case json = "https://jsonplaceholder.typicode.com/"
+    case country = "https://restcountries.com/v3.1/"
+}
+
 final class CoreAPIHelper {
     static let instance = CoreAPIHelper()
     private init() {}
-    private let baseURL = "https://jsonplaceholder.typicode.com/"
+    private let baseURL = BaseURL.country.rawValue
     
     func makeURL(path: String) -> URL? {
         let urlString = baseURL + path

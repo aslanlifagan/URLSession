@@ -14,6 +14,18 @@ final class MainViewController: BaseViewController {
         return r
     }()
     
+    private lazy var searchField: UITextField = {
+        let t = UITextField()
+        t.placeholder = "Search"
+        t.delegate = self
+        t.borderStyle = .roundedRect
+        t.layer.borderColor = UIColor.lightGray.cgColor
+        t.layer.borderWidth = 1
+        t.layer.cornerRadius = 12
+        t.anchorSize(.init(width: 0, height: 56))
+        return t
+    }()
+    
     private lazy var table: UITableView = {
         let t = UITableView()
         t.delegate = self
@@ -59,13 +71,27 @@ final class MainViewController: BaseViewController {
     
     override func configureView() {
         super.configureView()
-        view.addSubViews(table, loadingView, submitButton)
+        view.addSubViews(table, loadingView, submitButton, searchField)
     }
     
     override func configureConstraint() {
         super.configureConstraint()
-        table.fillSuperview(padding: .init(all: 24))
         loadingView.fillSuperview()
+        searchField.anchor(
+            top: view.safeAreaLayoutGuide.topAnchor,
+            leading: view.leadingAnchor,
+            trailing: view.trailingAnchor,
+            padding: .init(top: 0, left: 20, bottom: 0, right: -20)
+        )
+        
+        table.anchor(
+            top: searchField.bottomAnchor,
+            leading: view.leadingAnchor,
+            bottom: view.safeAreaLayoutGuide.bottomAnchor,
+            trailing: view.trailingAnchor,
+            padding: .init(top: 4, left: 20, bottom: 0, right: -20)
+        )
+        
         submitButton.anchor(
             leading: view.leadingAnchor,
             bottom: view.safeAreaLayoutGuide.bottomAnchor,
@@ -78,7 +104,7 @@ final class MainViewController: BaseViewController {
     }
     
     @objc func submitButtonClicked() {
-        viewModel.sortedAreaList()
+        viewModel.sortedAToZList()
     }
     
     @objc func reloadPage() {
@@ -123,5 +149,13 @@ extension MainViewController: UITableViewDelegate,
         guard let item = viewModel.getProtocol(index: indexPath.row) else {return UITableViewCell()}
         cell.configureCell(model: item)
         return cell
+    }
+}
+
+extension MainViewController: UITextFieldDelegate {
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        guard let text = textField.text else {return}
+        viewModel.search(text: text)
+        print(text)
     }
 }

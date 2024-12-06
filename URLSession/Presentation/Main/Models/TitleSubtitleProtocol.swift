@@ -9,4 +9,5 @@ import Foundation
 protocol TitleSubtitleProtocol {
     var titleString: String {get}
     var subtitleString: String {get}
+    var iconURL: String {get}
 }

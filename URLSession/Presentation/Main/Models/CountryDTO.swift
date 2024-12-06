@@ -48,6 +48,10 @@ extension CountryDTO: TitleSubtitleProtocol {
     var subtitleString: String {
         capital?.first ?? ""
     }
+    
+    var iconURL: String {
+        flags?.png ?? ""
+    }
 }
 
 // MARK: - CapitalInfo

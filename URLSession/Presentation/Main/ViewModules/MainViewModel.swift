@@ -14,6 +14,7 @@ final class MainViewModel {
         case error(String)
     }
     private (set) var list: CountryList?
+    private (set) var searchList: CountryList?
     
     var listener: ((ViewState) -> Void)?
     
@@ -24,7 +25,7 @@ final class MainViewModel {
             listener?(.loaded)
             if let data = data {
                 list = data
-                print(#function, data)
+                searchList = data
                 listener?(.success)
             } else if let error = error {
                 listener?(.error(error.localizedDescription))
@@ -33,21 +34,30 @@ final class MainViewModel {
     }
     
     func sortedAToZList() {
-        list = list?.sorted(by: {$0.titleString < $1.titleString})
+        searchList = searchList?.sorted(by: {$0.titleString < $1.titleString})
         listener?(.success)
     }
     
     func sortedAreaList() {
-        list = list?.sorted(by: {$0.area ?? 0.0 > $1.area ?? 0.0})
+        searchList = searchList?.sorted(by: {$0.area ?? 0.0 > $1.area ?? 0.0})
         listener?(.success)
     }
     
+    func search(text: String) {
+        if text.isEmpty {
+           searchList = list
+        } else {
+            searchList = list?
+                .filter({ $0.titleString.lowercased().contains(text.lowercased())})
+        }        
+        listener?(.success)
+    }
     func getProtocol(index: Int) -> TitleSubtitleProtocol? {
-        return list?[index]
+        return searchList?[index]
     }
     
     func getItems() -> Int {
-        list?.count ?? 0
+        searchList?.count ?? 0
     }
     
     

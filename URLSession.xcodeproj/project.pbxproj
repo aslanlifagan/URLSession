@@ -10,20 +10,15 @@
 		8204711A2D0352D50023A6B6 /* AllCountryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820471192D0352D50023A6B6 /* AllCountryHelper.swift */; };
 		8204711C2D0352E90023A6B6 /* AllCountryAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8204711B2D0352E90023A6B6 /* AllCountryAPIService.swift */; };
 		8204711E2D03552E0023A6B6 /* CountryDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8204711D2D03552E0023A6B6 /* CountryDTO.swift */; };
+		820471212D0362010023A6B6 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 820471202D0362010023A6B6 /* SDWebImage */; };
 		826DB9752CF773ED0041F958 /* CoreErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826DB9742CF773ED0041F958 /* CoreErrorModel.swift */; };
-		826DB9782CF77CF00041F958 /* CommentAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826DB9772CF77CF00041F958 /* CommentAPIManager.swift */; };
-		826DB97A2CF77E310041F958 /* CommentHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826DB9792CF77E310041F958 /* CommentHelper.swift */; };
-		828209802CF7848F0011E956 /* PostAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8282097F2CF7848F0011E956 /* PostAPIManager.swift */; };
-		828209822CF7849A0011E956 /* PostHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828209812CF7849A0011E956 /* PostHelper.swift */; };
 		8289CD5B2CF0AFA20065347F /* LayoutExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8289CD5A2CF0AFA20065347F /* LayoutExtension.swift */; };
 		8289CD5D2CF0AFB10065347F /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8289CD5C2CF0AFB10065347F /* Extension.swift */; };
 		8289CD682CF0B0670065347F /* TitleSubtitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8289CD672CF0B0670065347F /* TitleSubtitleCell.swift */; };
 		8289CD6B2CF0B0A50065347F /* TitleSubtitleProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8289CD6A2CF0B0A50065347F /* TitleSubtitleProtocol.swift */; };
 		8289CD6E2CF0B1740065347F /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8289CD6D2CF0B1740065347F /* BaseViewController.swift */; };
-		8289CD722CF0DFE70065347F /* CommentDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8289CD712CF0DFE70065347F /* CommentDTO.swift */; };
 		8289CD762CF0E89A0065347F /* CoreAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8289CD752CF0E89A0065347F /* CoreAPIManager.swift */; };
 		8289CD782CF0E9390065347F /* CoreAPIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8289CD772CF0E9390065347F /* CoreAPIHelper.swift */; };
-		8289CD7A2CF0ECA80065347F /* PostDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8289CD792CF0ECA80065347F /* PostDTO.swift */; };
 		82C64CE52CF0ADB300961080 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C64CE42CF0ADB300961080 /* AppDelegate.swift */; };
 		82C64CE72CF0ADB300961080 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C64CE62CF0ADB300961080 /* SceneDelegate.swift */; };
 		82C64CE92CF0ADB300961080 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C64CE82CF0ADB300961080 /* MainViewController.swift */; };
@@ -37,19 +32,13 @@
 		8204711B2D0352E90023A6B6 /* AllCountryAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCountryAPIService.swift; sourceTree = "<group>"; };
 		8204711D2D03552E0023A6B6 /* CountryDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDTO.swift; sourceTree = "<group>"; };
 		826DB9742CF773ED0041F958 /* CoreErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreErrorModel.swift; sourceTree = "<group>"; };
-		826DB9772CF77CF00041F958 /* CommentAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentAPIManager.swift; sourceTree = "<group>"; };
-		826DB9792CF77E310041F958 /* CommentHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentHelper.swift; sourceTree = "<group>"; };
-		8282097F2CF7848F0011E956 /* PostAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAPIManager.swift; sourceTree = "<group>"; };
-		828209812CF7849A0011E956 /* PostHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostHelper.swift; sourceTree = "<group>"; };
 		8289CD5A2CF0AFA20065347F /* LayoutExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutExtension.swift; sourceTree = "<group>"; };
 		8289CD5C2CF0AFB10065347F /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		8289CD672CF0B0670065347F /* TitleSubtitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSubtitleCell.swift; sourceTree = "<group>"; };
 		8289CD6A2CF0B0A50065347F /* TitleSubtitleProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSubtitleProtocol.swift; sourceTree = "<group>"; };
 		8289CD6D2CF0B1740065347F /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		8289CD712CF0DFE70065347F /* CommentDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentDTO.swift; sourceTree = "<group>"; };
 		8289CD752CF0E89A0065347F /* CoreAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreAPIManager.swift; sourceTree = "<group>"; };
 		8289CD772CF0E9390065347F /* CoreAPIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreAPIHelper.swift; sourceTree = "<group>"; };
-		8289CD792CF0ECA80065347F /* PostDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDTO.swift; sourceTree = "<group>"; };
 		82C64CE12CF0ADB300961080 /* URLSession.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = URLSession.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82C64CE42CF0ADB300961080 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82C64CE62CF0ADB300961080 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				820471212D0362010023A6B6 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,24 +68,6 @@
 				8204711B2D0352E90023A6B6 /* AllCountryAPIService.swift */,
 			);
 			path = AllCountry;
-			sourceTree = "<group>";
-		};
-		826DB9762CF779920041F958 /* Comment */ = {
-			isa = PBXGroup;
-			children = (
-				826DB9772CF77CF00041F958 /* CommentAPIManager.swift */,
-				826DB9792CF77E310041F958 /* CommentHelper.swift */,
-			);
-			path = Comment;
-			sourceTree = "<group>";
-		};
-		828209832CF7849D0011E956 /* Post */ = {
-			isa = PBXGroup;
-			children = (
-				828209812CF7849A0011E956 /* PostHelper.swift */,
-				8282097F2CF7848F0011E956 /* PostAPIManager.swift */,
-			);
-			path = Post;
 			sourceTree = "<group>";
 		};
 		8289CD592CF0AF920065347F /* Extension */ = {
@@ -156,8 +128,6 @@
 			isa = PBXGroup;
 			children = (
 				8289CD6A2CF0B0A50065347F /* TitleSubtitleProtocol.swift */,
-				8289CD712CF0DFE70065347F /* CommentDTO.swift */,
-				8289CD792CF0ECA80065347F /* PostDTO.swift */,
 				8204711D2D03552E0023A6B6 /* CountryDTO.swift */,
 			);
 			path = Models;
@@ -193,8 +163,6 @@
 			children = (
 				8289CD742CF0E88F0065347F /* Core */,
 				820471182D03528E0023A6B6 /* AllCountry */,
-				826DB9762CF779920041F958 /* Comment */,
-				828209832CF7849D0011E956 /* Post */,
 			);
 			path = NetworkLayer;
 			sourceTree = "<group>";
@@ -254,6 +222,9 @@
 			dependencies = (
 			);
 			name = URLSession;
+			packageProductDependencies = (
+				820471202D0362010023A6B6 /* SDWebImage */,
+			);
 			productName = URLSession;
 			productReference = 82C64CE12CF0ADB300961080 /* URLSession.app */;
 			productType = "com.apple.product-type.application";
@@ -282,6 +253,9 @@
 				Base,
 			);
 			mainGroup = 82C64CD82CF0ADB300961080;
+			packageReferences = (
+				8204711F2D0362010023A6B6 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = 82C64CE22CF0ADB300961080 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -308,27 +282,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				826DB9782CF77CF00041F958 /* CommentAPIManager.swift in Sources */,
 				8204711A2D0352D50023A6B6 /* AllCountryHelper.swift in Sources */,
 				8289CD682CF0B0670065347F /* TitleSubtitleCell.swift in Sources */,
 				826DB9752CF773ED0041F958 /* CoreErrorModel.swift in Sources */,
-				828209802CF7848F0011E956 /* PostAPIManager.swift in Sources */,
 				82C64CE92CF0ADB300961080 /* MainViewController.swift in Sources */,
 				82C64CE52CF0ADB300961080 /* AppDelegate.swift in Sources */,
 				82C64CFC2CF0AE4900961080 /* MainViewModel.swift in Sources */,
 				8289CD5D2CF0AFB10065347F /* Extension.swift in Sources */,
-				8289CD7A2CF0ECA80065347F /* PostDTO.swift in Sources */,
 				8289CD782CF0E9390065347F /* CoreAPIHelper.swift in Sources */,
-				8289CD722CF0DFE70065347F /* CommentDTO.swift in Sources */,
 				8289CD6E2CF0B1740065347F /* BaseViewController.swift in Sources */,
 				8204711C2D0352E90023A6B6 /* AllCountryAPIService.swift in Sources */,
 				8289CD5B2CF0AFA20065347F /* LayoutExtension.swift in Sources */,
-				826DB97A2CF77E310041F958 /* CommentHelper.swift in Sources */,
 				8204711E2D03552E0023A6B6 /* CountryDTO.swift in Sources */,
 				8289CD762CF0E89A0065347F /* CoreAPIManager.swift in Sources */,
 				8289CD6B2CF0B0A50065347F /* TitleSubtitleProtocol.swift in Sources */,
 				82C64CE72CF0ADB300961080 /* SceneDelegate.swift in Sources */,
-				828209822CF7849A0011E956 /* PostHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -551,6 +519,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8204711F2D0362010023A6B6 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.20.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		820471202D0362010023A6B6 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8204711F2D0362010023A6B6 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 82C64CD92CF0ADB300961080 /* Project object */;
 }

@@ -13,81 +13,42 @@ final class MainViewModel {
         case success
         case error(String)
     }
-    private (set) var list: CommentList?
-    private (set) var postList: PostList?
+    private (set) var list: CountryList?
     
     var listener: ((ViewState) -> Void)?
     
-    func getCommentList() {
+    func getCountryListRequest() {
         listener?(.loading)
-        CommentAPIManager.instance.getCommentList { [weak self] response, error in
+        AllCountryAPIService.instance.getCountry { [weak self] data, error in
             guard let self = self else {return}
-            self.listener?(.loaded)
-            guard let error = error else {
-                if let response = response {
-                    list = response
-                    listener?(.success)
-                }
-                return
-            }
-            listener?(.error(error.message ?? ""))
-            
-        }
-    }
-    
-    func getCommentWithPost() {
-        listener?(.loading)
-        CommentAPIManager.instance.getCommentList(with: 3) { [weak self] response, error in
-            guard let self = self else {return}
-            self.listener?(.loaded)
-            if let response = response {
-                list = response
-                self.listener?(.success)
+            listener?(.loaded)
+            if let data = data {
+                list = data
+                print(#function, data)
+                listener?(.success)
             } else if let error = error {
-                self.listener?(.error(error.message ?? ""))
+                listener?(.error(error.localizedDescription))
             }
         }
     }
     
-    func getPostList() {
-        self.listener?(.loading)
-        PostAPIManager.instance.getPostList { [weak self] response, error in
-            guard let self = self else {return}
-            self.listener?(.loaded)
-            if let response = response {
-                postList = response
-                self.listener?(.success)
-            } else if let error = error {
-                self.listener?(.error(error.message ?? ""))
-            }
-        }
+    func sortedAToZList() {
+        list = list?.sorted(by: {$0.titleString < $1.titleString})
+        listener?(.success)
     }
     
-    func createPost() {
-        let body: [String: Any] = [
-            "title": "Test",
-            "body": "ksajdbasjhkdbsahjbaskhjdbasjdbaskhjdbasjdbahjdbasjhdbsahjd",
-            "userId": 1000
-        ]
-        listener?(.loading)
-        PostAPIManager.instance.createPost(body: body){ [weak self] response, error in
-            guard let self = self else {return}
-            self.listener?(.loaded)
-            if let response = response {
-                postList = response
-                print(response)
-                self.listener?(.success)
-            } else if let error = error {
-                self.listener?(.error(error.message ?? ""))
-            }
-        }
+    func sortedAreaList() {
+        list = list?.sorted(by: {$0.area ?? 0.0 > $1.area ?? 0.0})
+        listener?(.success)
     }
     
     func getProtocol(index: Int) -> TitleSubtitleProtocol? {
-        return postList?[index]
+        return list?[index]
     }
     
     func getItems() -> Int {
-        postList?.count ?? 0
+        list?.count ?? 0
     }
+    
+    
 }

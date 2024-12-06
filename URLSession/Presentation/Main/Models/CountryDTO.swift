@@ -39,6 +39,16 @@ struct CountryDTO: Codable {
     let gini: [String: Double]?
     let postalCode: PostalCode?
 }
+extension CountryDTO: TitleSubtitleProtocol {
+    
+    var titleString: String {
+        name?.official ?? ""
+    }
+    
+    var subtitleString: String {
+        capital?.first ?? ""
+    }
+}
 
 // MARK: - CapitalInfo
 struct CapitalInfo: Codable {

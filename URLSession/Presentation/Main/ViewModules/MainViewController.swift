@@ -45,9 +45,7 @@ final class MainViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewModel()
-        //                viewModel.getCommentList()
-        //        viewModel.getCommentWithPost()
-        viewModel.getPostList()
+        viewModel.getCountryListRequest()
     }
     
     override func configureView() {
@@ -71,9 +69,9 @@ final class MainViewController: BaseViewController {
     }
     
     @objc func submitButtonClicked() {
-        viewModel.createPost()
-        print(#function)
+        viewModel.sortedAreaList()
     }
+    
     fileprivate func configureViewModel() {
         
         viewModel.listener = { [weak self] state in

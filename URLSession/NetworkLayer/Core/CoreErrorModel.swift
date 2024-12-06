@@ -22,4 +22,12 @@ struct CoreErrorModel: Error, Decodable {
     static func decodingError() -> CoreErrorModel {
         return CoreErrorModel(code: 0, message: "Can not parse json")
     }
+    
+    static func encodingError() -> CoreErrorModel {
+        return CoreErrorModel(code: 0, message: "Can not encode json")
+    }
+    
+    static func invalidURL() -> CoreErrorModel {
+        return CoreErrorModel(code: 404, message: "Can not find URL")
+    }
 }

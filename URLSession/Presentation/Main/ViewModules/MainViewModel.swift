@@ -74,7 +74,7 @@ final class MainViewModel {
             guard let self = self else {return}
             self.listener?(.loaded)
             if let response = response {
-                postList = response
+                postList?.append(response)
                 print(response)
                 self.listener?(.success)
             } else if let error = error {

@@ -6,11 +6,23 @@
 //
 
 import Foundation
-enum CommentHelper {
+import Alamofire
+enum CommentHelper: CoreAPIConfiguration {
     case comment
     case postId(id: Int)
     
-    var endpoint: String {
+    var baseURL: String {
+        "https://jsonplaceholder.typicode.com/"
+    }
+    
+    var header: HTTPHeader {
+        return HTTPHeader(name: "", value: "")
+    }
+    var mainPath: String {
+        "comments/"
+    }
+    
+    var path: String {
         switch self {
             case .comment:
                 ""
@@ -19,17 +31,19 @@ enum CommentHelper {
         }
     }
     
-    private var basePath: String {
-        return "comments/"
+    var method: HTTPMethod {
+        switch self {
+            case .comment: .get
+            case .postId(let id): .post
+        }
     }
     
-    var path: URL? {
+    var parameter: Parameters? {
         switch self {
             case .comment:
-                return CoreAPIHelper.instance.makeURL(path: basePath + self.endpoint)
-            case .postId:
-                return CoreAPIHelper.instance.makeURL(path: basePath + self.endpoint)
+                nil
+            case .postId(let id):
+                nil
         }
-        
     }
 }

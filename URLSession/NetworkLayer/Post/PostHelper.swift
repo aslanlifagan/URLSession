@@ -5,26 +5,43 @@
 //  Created by Aslanli Faqan on 27.11.24.
 //
 
+import Alamofire
 import Foundation
-enum PostHelper {
-    case posts
+enum PostHelper: CoreAPIConfiguration {
+    case getPosts
+    case createPosts([String: Any])
     
-    var endpoint: String {
+    var baseURL: String {
+        "https://jsonplaceholder.typicode.com/"
+    }
+    
+    var header: HTTPHeader {
+        return HTTPHeader(name: "", value: "")
+    }
+    var mainPath: String {
+        "posts/"
+    }
+    
+    var path: String {
         switch self {
-            case .posts:
-                ""
+            case .getPosts: ""
+            case .createPosts: ""
         }
     }
     
-    private var basePath: String {
-        return "posts/"
+    var method: HTTPMethod {
+        switch self {
+            case .getPosts:
+                    .get
+            case .createPosts:
+                    .post
+        }
     }
     
-    var path: URL? {
+    var parameter: Parameters? {
         switch self {
-            case .posts:
-                return CoreAPIHelper.instance.makeURL(path: basePath + self.endpoint)
+            case .getPosts: return nil
+            case .createPosts(let body): return body
         }
-        
     }
 }

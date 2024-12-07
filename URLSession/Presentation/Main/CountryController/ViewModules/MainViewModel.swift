@@ -56,6 +56,10 @@ final class MainViewModel {
         return searchList?[index]
     }
     
+    func getItem(index: Int) -> CountryDTO? {
+        return searchList?[index]
+    }
+    
     func getItems() -> Int {
         searchList?.count ?? 0
     }

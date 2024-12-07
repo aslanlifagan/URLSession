@@ -103,14 +103,6 @@ final class MainViewController: BaseViewController {
         submitButton.addTarget(self, action: #selector(submitButtonClicked), for: .touchUpInside)
     }
     
-    @objc func submitButtonClicked() {
-        viewModel.sortedAToZList()
-    }
-    
-    @objc func reloadPage() {
-        viewModel.getCountryListRequest()
-    }
-    
     fileprivate func configureViewModel() {
         
         viewModel.listener = { [weak self] state in
@@ -129,6 +121,23 @@ final class MainViewController: BaseViewController {
                 }
             }
         }
+    }
+    
+    //MARK: Private Functions
+    
+    fileprivate func showCountryDetail(country: CountryDTO) {
+        let controller = CountryDetailController(viewModel: .init(country: country))
+        navigationController?.show(controller, sender: nil)
+    }
+    
+    @objc
+    private func submitButtonClicked() {
+        viewModel.sortedAToZList()
+    }
+    
+    @objc 
+    private func reloadPage() {
+        viewModel.getCountryListRequest()
     }
 }
 //MARK: UITableViewDelegate,UITableViewDataSource
@@ -149,6 +158,13 @@ extension MainViewController: UITableViewDelegate,
         guard let item = viewModel.getProtocol(index: indexPath.row) else {return UITableViewCell()}
         cell.configureCell(model: item)
         return cell
+    }
+    func tableView(
+        _ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath
+    ) {
+        guard let item = viewModel.getItem(index: indexPath.row) else {return}
+        showCountryDetail(country: item)
     }
 }
 

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import MapKit
 final class CountryDetailController: BaseViewController {
     
     private lazy var loadingView: UIActivityIndicatorView = {
@@ -15,17 +15,15 @@ final class CountryDetailController: BaseViewController {
         return v
     }()
     
-    private lazy var submitButton: UIButton = {
-        let b = UIButton()
-        b.setTitle("Create", for: .normal)
-        b.backgroundColor = .red
-        b.titleLabel?.textColor = .white
-        b.anchorSize(.init(width: 0, height: 56))
-        return b
+    private lazy var mapView: MKMapView = {
+       let m = MKMapView()
+        m.overrideUserInterfaceStyle = .dark
+        m.delegate = self
+        return m
     }()
     
     private let viewModel: CountryDetailViewModel
-    
+    private var coordinator: CLLocationCoordinate2D?
     init(viewModel: CountryDetailViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -41,20 +39,40 @@ final class CountryDetailController: BaseViewController {
     
     override func configureView() {
         super.configureView()
-        view.addSubViews(loadingView, submitButton)
+        coordinator = .init(latitude: viewModel.getLatlng().0, longitude: viewModel.getLatlng().1)
+        view.addSubViews(loadingView, mapView)
+        navigationItem.title = viewModel.getTitle()
+        addPin()
     }
     
     override func configureConstraint() {
         super.configureConstraint()
         loadingView.fillSuperview()
-        submitButton.anchor(
-            leading: view.leadingAnchor,
-            bottom: view.safeAreaLayoutGuide.bottomAnchor,
-            trailing: view.trailingAnchor,padding: .init(all: 20))
+        mapView.fillSuperviewSafeAreaLayoutGuide(padding: .init(top: 24, left: 0, bottom: 0, right: 0))
     }
     
     override func configureTargets() {
         super.configureTargets()
+    }
+    
+    fileprivate func addPin() {
+        guard let coordinator = coordinator else {return}
+        let pin = MKPointAnnotation()
+        pin.title = viewModel.getTitle()
+        pin.coordinate = coordinator
+        mapView.addAnnotation(pin)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+            self?.setRegion()
+            
+        }
+    }
+    
+    fileprivate func setRegion() {
+        guard let coordinator = coordinator else {return}
+        let span: MKCoordinateSpan = MKCoordinateSpan(
+            latitudeDelta: 0.5, longitudeDelta: 0.5)
+        mapView.setRegion(.init(center: coordinator, span: span), animated: true)
     }
     
     fileprivate func configureViewModel() {
@@ -75,4 +93,8 @@ final class CountryDetailController: BaseViewController {
             }
         }
     }
+}
+
+extension CountryDetailController: MKMapViewDelegate {
+    
 }
